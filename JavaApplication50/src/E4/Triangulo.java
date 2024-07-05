@@ -4,17 +4,24 @@
  */
 package E4;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author SERGIO
  */
 public class Triangulo extends javax.swing.JFrame {
 
+    private double a, b, c;
+    private figuraTriangulo figuraTriangulo;
+
     /**
      * Creates new form Triangulo
      */
     public Triangulo() {
         initComponents();
+        setLocationRelativeTo(null);
+        this.figuraTriangulo = new figuraTriangulo();
     }
 
     /**
@@ -26,21 +33,204 @@ public class Triangulo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        campoLadoA = new javax.swing.JTextField();
+        campoLadoB = new javax.swing.JTextField();
+        campoLadoC = new javax.swing.JTextField();
+        botonCalcular = new javax.swing.JButton();
+        botonLimpiar = new javax.swing.JButton();
+        botonSalir = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        campoPerimetro = new javax.swing.JTextField();
+        campoArea = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("INGRESO DE DATOS:");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Ingrese el lado A:");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Ingrese el lado B:");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("Ingrese el lado C:");
+
+        botonCalcular.setText("Calcular");
+        botonCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCalcularActionPerformed(evt);
+            }
+        });
+
+        botonLimpiar.setText("Limpiar");
+        botonLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLimpiarActionPerformed(evt);
+            }
+        });
+
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setText("CÁLCULO DE RESULTADOS:");
+
+        jLabel6.setText("Perímetro");
+
+        jLabel7.setText("Área");
+
+        campoPerimetro.setEditable(false);
+
+        campoArea.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(campoPerimetro, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(campoArea)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(38, 38, 38)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(campoLadoA, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                        .addComponent(campoLadoB)
+                                        .addComponent(campoLadoC)))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(botonCalcular)
+                            .addGap(18, 18, 18)
+                            .addComponent(botonLimpiar)
+                            .addGap(18, 18, 18)
+                            .addComponent(botonSalir))
+                        .addComponent(jLabel5)))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(campoLadoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(campoLadoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(campoLadoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonCalcular)
+                    .addComponent(botonLimpiar)
+                    .addComponent(botonSalir))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(campoPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(campoArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
+        campoLadoA.setText(" ");
+        campoLadoB.setText(" ");
+        campoLadoC.setText(" ");
+        campoPerimetro.setText(" ");
+        campoArea.setText(" ");
+    }//GEN-LAST:event_botonLimpiarActionPerformed
+
+    private void botonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalcularActionPerformed
+        if (campoLadoA.getText().trim().isEmpty() || campoLadoB.getText().trim().isEmpty() || campoLadoC.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese los lados del triangulo");
+        } else {
+            figuraTriangulo.ladosDouble();
+            campoPerimetro.setText(String.valueOf(figuraTriangulo.perimetro()));
+            campoArea.setText(String.valueOf(figuraTriangulo.area()));
+        }
+    }//GEN-LAST:event_botonCalcularActionPerformed
+
+    private class figuraTriangulo extends Figura {
+
+        private void ladosDouble() {
+            a = Double.parseDouble(campoLadoA.getText());
+            b = Double.parseDouble(campoLadoB.getText());
+            c = Double.parseDouble(campoLadoC.getText());
+        }
+
+        @Override
+        public double area() {
+            double areaTriangulo = 0;
+            double s = (a + b + c) / 2;
+            if (a != b && a != c && c != b) {
+                areaTriangulo = Math.pow((s * (s - a) * (s - b) * (s - c)), 1.0 / 2.0);
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe ingresar lados diferentes");
+            }
+
+            return areaTriangulo;
+        }
+
+        @Override
+        public double perimetro() {
+            return a + b + c;
+        }
+
+        @Override
+        public String mostrarFigura() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public String mostrarReporte() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+    }
 
     /**
      * @param args the command line arguments
@@ -78,5 +268,20 @@ public class Triangulo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCalcular;
+    private javax.swing.JButton botonLimpiar;
+    private javax.swing.JButton botonSalir;
+    private javax.swing.JTextField campoArea;
+    private javax.swing.JTextField campoLadoA;
+    private javax.swing.JTextField campoLadoB;
+    private javax.swing.JTextField campoLadoC;
+    private javax.swing.JTextField campoPerimetro;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }
