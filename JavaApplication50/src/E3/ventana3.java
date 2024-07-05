@@ -128,27 +128,27 @@ public class ventana3 extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoRaiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(campoRaiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoRaiz2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addComponent(campoRaiz2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoRaiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campoRaiz1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(campoRaiz2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(campoRaiz2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -299,10 +299,10 @@ public class ventana3 extends javax.swing.JFrame {
     private void coeficientesDouble() {
         //convirtiendo a double
         try {
-            coefA = Double.parseDouble(campoCoef1.getText());
-            coefB = Double.parseDouble(campoCoef2.getText());
+            coefA = Double.parseDouble(campoCoef2.getText());
+            coefB = Double.parseDouble(campoCoef1.getText());
             coefC = Double.parseDouble(campoCoefIndp.getText());
-        } catch(NumberFormatException e)  {
+        } catch (NumberFormatException e) {
             campoAdvertencias.setText("Ingrese numeros validos!");
         }
     }
@@ -313,8 +313,8 @@ public class ventana3 extends javax.swing.JFrame {
 
     private void calculoRaices() {
         //Calculando raices
-        raiz1 = -coefB + Math.pow(calculoDiscriminante(), 1.0 / 2.0) / (2 * coefA);
-        raiz2 = -coefB - Math.pow(calculoDiscriminante(), 1.0 / 2.0) / (2 * coefA);
+        raiz1 = (-coefB + Math.pow(calculoDiscriminante(), 1.0 / 2.0)) / (2 * coefA);
+        raiz2 = (-coefB - Math.pow(calculoDiscriminante(), 1.0 / 2.0)) / (2 * coefA);
     }
 
     private void campoRaiz1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoRaiz1ActionPerformed
@@ -329,11 +329,14 @@ public class ventana3 extends javax.swing.JFrame {
             if (calculoDiscriminante() < 0) {
                 campoAdvertencias.setText("No existen soluciones reales");
             } else {
-                calculoRaices();
-                campoRaiz1.setText(String.valueOf(raiz1));
-                campoRaiz2.setText(String.valueOf(raiz2));
+                if (coefA==0) {
+                    campoAdvertencias.setText("El coeficiente principal debe ser diferente de cero para tener 2 raices");
+                } else {
+                    calculoRaices();
+                    campoRaiz1.setText(String.format("%.5f...", raiz1));
+                    campoRaiz2.setText(String.format("%.5f...", raiz2));
+                }
             }
-
         }
 
 
