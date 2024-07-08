@@ -43,6 +43,7 @@ public class Circulo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(Ejecutor.DISPOSE_ON_CLOSE);
         setTitle("Datos CIRCUNFERENCIA");
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("INGRESO DE DATOS:");

@@ -53,6 +53,11 @@ public class Ejecutor extends javax.swing.JFrame {
         botonTriangulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonTriangulo.setIconTextGap(5);
         botonTriangulo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonTriangulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonTrianguloActionPerformed(evt);
+            }
+        });
 
         botonCuadrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cuadrado.png"))); // NOI18N
         botonCuadrado.setText("Cuadrado");
@@ -125,6 +130,10 @@ public class Ejecutor extends javax.swing.JFrame {
     private void botonCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCuadradoActionPerformed
         new Cuadrado().setVisible(true);
     }//GEN-LAST:event_botonCuadradoActionPerformed
+
+    private void botonTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrianguloActionPerformed
+        new Triangulo().setVisible(true);
+    }//GEN-LAST:event_botonTrianguloActionPerformed
 
     /**
      * @param args the command line arguments
